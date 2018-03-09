@@ -74,7 +74,7 @@ final class InterceptedFunctionGenerator extends AbstractGenerator
         }
 
         $this->returnsReference = $reflectionFunction->returnsReference();
-        $this->name             = $reflectionFunction->getName();
+        $this->name             = $reflectionFunction->getShortName();
 
         $parameterList    = new FunctionParameterList($reflectionFunction, $useTypeWidening);
         $this->parameters = $parameterList->getGeneratedParameters();
@@ -124,10 +124,5 @@ final class InterceptedFunctionGenerator extends AbstractGenerator
         $output .= '}' . self::LINE_FEED;
 
         return $output;
-    }
-
-    public function __toString()
-    {
-        return $this->generate();
     }
 }
